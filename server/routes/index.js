@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const router = Router();
 const controllers = require("../controllers");
+const router = Router();
 
 router.get("/", (req, res) => {
   res.send("This is the root");
@@ -14,7 +14,7 @@ router.get("/items/:id", controllers.getItemByID);
 
 router.get("/items/title/:title", controllers.getItemByTitle);
 
-router.patch("/items/:id", controllers.updateItem);
+router.post("/items/:id", controllers.updateItem);
 
 router.delete("/items/:id", controllers.deleteItem);
 
