@@ -9,14 +9,16 @@ const ItemCreate = (props) => {
   const [created, setCreated] = useState(null);
 
   const handleChange = (event) => {
-    event.preventDefault();
     const updatedField = { [event.target.name]: event.target.value };
+
     const editedItem = Object.assign(item, updatedField);
+
     setItem(editedItem);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     await axios({
       url: `http://localhost:5000/api/items`,
       method: "POST",
