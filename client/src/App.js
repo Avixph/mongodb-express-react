@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, withRouter } from "react-router-dom";
+import Items from "./components/routes/Items";
+import Item from "./components/routes/Item";
+import ItemEdit from "./components/routes/ItemEdit";
+import ItemCreate from "./components/routes/ItemCreate";
+import Home from "./components/routes/Home";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>{props.location.state ? props.location.state.msg : null}</h3>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/items" component={Items} />
+      <Route exact path="/create-items" component={ItemCreate} />
+      <Route exact path="/items/:id" component={Item} />
+      <Route exact path="/items/:id/edit" component={ItemEdit} />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
